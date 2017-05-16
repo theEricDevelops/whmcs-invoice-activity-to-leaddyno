@@ -94,15 +94,15 @@ add_hook('InvoicePaid', 1, function($vars) {
 		$url = 'https://api.leaddyno.com/v1/affiliates';
 		$req = '&email=' . $clientinfo['client[email]'];
 		$req .= '&first_name=' . $clientinfo['client[firstname]'];
-		$req .= '&last_name=' . $clientinfo['client[lastname]']
+		$req .= '&last_name=' . $clientinfo['client[lastname]'];
 
 		// Send the children on the trip
 		make_curl_request($url, $req);
 	}
-
+	
 	$create_purchase = create_leaddyno_purchase($vars);
 	if ($create_purchase) { create_a_leaddyno_affiliate($vars); }
-
+	
 });
 
 add_hook('InvoiceRefunded', 1, function($vars) {
